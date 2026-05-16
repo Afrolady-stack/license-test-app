@@ -79,7 +79,7 @@ const questions = [
 export default function App() {
   const [mode, setMode] = useState("study");
   const [current, setCurrent] = useState(0);
-  const [selected, setSelected] = useState(null);
+ const [selected, setSelected] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const [filter, setFilter] = useState("All");
@@ -93,7 +93,7 @@ export default function App() {
 
   const question = filteredQuestions[current];
 
-  function answerQuestion(value) {
+  function answerQuestion(value: boolean) {
     setSelected(value);
 
     if (value === question.answer) {
@@ -116,8 +116,7 @@ export default function App() {
     setScore(0);
     setFinished(false);
   }
-
-  function changeFilter(category) {
+function changeFilter(category: string) {
     setFilter(category);
     setCurrent(0);
     setSelected(null);
